@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Sensor overview
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let data of iotService.dhtData">
+    <ion-card-header>
+      <ion-card-subtitle>{{data.date}}</ion-card-subtitle>
+      <ion-card-title>Temperature & Humidity sensor</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      Temperature: {{data.temperature}} °C <br>
+      Humidity: {{data.humidity}} %
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngFor="let data of iotService.cpuData">
+    <ion-card-header>
+      <ion-card-subtitle>{{data.date}}</ion-card-subtitle>
+      <ion-card-title>CPU temperature sensor</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      Temperature: {{data.temperature}} °C <br>
+    </ion-card-content>
+    <ion-button (click)="iotService.refreshHome()" style="margin: 5%;" color="primary">Refresh</ion-button>
+  </ion-card>
+
+  <div style="text-align: center;">
+    <ion-button (click)="iotService.ledOn()" style="margin: 2%;" color="primary">Led on</ion-button>
+    <ion-button (click)="iotService.ledOff()" style="margin: 2%;" color="primary">Led off</ion-button>
+    <ion-button (click)="iotService.ledBlink()" style="margin: 2%;" color="primary">Led Blink</ion-button>
+  </div>
+</ion-content>

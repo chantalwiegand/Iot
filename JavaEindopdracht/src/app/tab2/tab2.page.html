@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Sensor 1
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-card *ngFor="let data of iotService.dhtData">
+    <ion-card-header>
+      <ion-card-subtitle>{{data.date}}</ion-card-subtitle>
+      <ion-card-title>Temperature & Humidity sensor</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      Temperature: {{data.temperature}} °C <br>
+      Humidity: {{data.humidity}} %
+    </ion-card-content>
+    <ion-button (click)="iotService.refreshDHT()" style="margin: 5%;" color="primary">Refresh</ion-button>
+  </ion-card>
+
+
+  <ion-text class="ion-text-center" color="primary">
+    <h1>Old Data</h1>
+  </ion-text>
+
+
+  <div *ngFor="let data2 of iotService.data2.slice().reverse(); let i=index">
+      <ion-card *ngIf="i<11 && i>0">
+        <ion-card-header>
+          <ion-card-subtitle>{{data2.date}}</ion-card-subtitle>
+          <ion-card-title> {{i}}. Temperature & Humidity sensor</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          Temperature: {{data2.temperature}} °C <br>
+          Humidity: {{data2.humidity}} %
+        </ion-card-content>
+      </ion-card>
+  </div>
+  
+</ion-content>

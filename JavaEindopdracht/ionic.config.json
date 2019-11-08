@@ -1,0 +1,7 @@
+{
+  "name": "JavaEindopdracht",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
